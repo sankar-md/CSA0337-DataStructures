@@ -1,0 +1,91 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+	int data;
+	struct node *next;
+};
+struct node *start;
+int main()
+{
+	int ch,n=3;
+	struct node *tmp, *fnnode , *curr , *prev;
+	int val,i;
+	while(ch<=6)
+	{
+		printf("\n1. create a linked list \n2. insert at begin \n3. insert at end \n4. delete at begin  \n5. delete at end \n6. display \nenter your choice : ");
+		scanf("%d",&ch);
+
+		if(ch==1){
+		 	start=(struct node* )malloc(sizeof(struct node));
+		 	printf("\nenter the value : ");
+		 	scanf("%d",&val);
+		 	start->data=val;
+		 	start->next=NULL;
+		 	tmp=start;
+		 	for(i=0;i<3;i++)
+		 	{
+		 		fnnode=(struct node* )malloc(sizeof(struct node));
+		 		printf("\nenter the data : ");
+		 		scanf("%d",&val);
+		 		fnnode->data=val;
+		 		fnnode->next=NULL;
+		 		tmp->next=fnnode;
+		 		tmp=fnnode;
+			 }
+		}
+		else if(ch==2)
+		{
+			printf("\nenter the data : ");
+			scanf("%d",&val);
+			fnnode=(struct node*)malloc(sizeof(struct node*));
+			fnnode->data=val;
+			fnnode->next=start;
+			start=fnnode;
+			n++;
+		}
+		else if(ch==3)
+		{
+			printf("\nenter the data : ");
+			scanf("%d",&val);
+			fnnode=(struct node*)malloc(sizeof(struct node*));
+			fnnode->data=val;
+			fnnode->next=NULL;
+			tmp->next=fnnode;
+			tmp=fnnode;
+			n++;
+		}
+		else if(ch==4)
+		{
+			tmp=start->next;
+			free(start);
+			start=tmp;
+		}
+		else if(ch==5)
+		{
+			tmp=start;
+			while(tmp!=NULL)
+			{
+				if(tmp->next!=NULL){
+					prev=tmp;
+				}
+				else
+				{
+					prev->next=NULL;
+					free(tmp);
+					tmp=prev;
+				}
+				tmp=tmp->next;
+			}
+		}
+		else if(ch==6)
+		{
+			tmp=start; 
+		 	while(tmp!=NULL)
+		 	{
+		 		printf("\n%d ",tmp->data);
+		 		tmp=tmp->next;
+			}
+		}
+
+}
+}
